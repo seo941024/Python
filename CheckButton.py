@@ -7,8 +7,10 @@ root.geometry("640x480+0+0")
 root.resizable(True, True)
 
 def show():
-    print("item1: %d, \nitem2: %d, \nitem3: %d\m" % (variety1.get(), variety2.get(), variety3.get()))
-    messagebox.showinfo("Button Clicked", "item1: {0},\nitem2: {1}, \nitem3: {2}\n".format(variety1.get(), variety2.get(), variety3.get()))
+    print("item1: %d, \nitem2: %d, \nitem3: %d\m" % (variety1.get(),\
+                        variety2.get(), variety3.get()))
+    messagebox.showinfo("Button Clicked", "item1: {0},\nitem2: {1},\
+                        \nitem3: {2}\n".format(variety1.get(), variety2.get(), variety3.get()))
 
 variety1 = IntVar()
 variety2 = IntVar()
@@ -35,8 +37,10 @@ def deselectall():
     bt2.deselect()
     bt3.deselect()
 
-buttonSelectall = Button(root, width=10, text="select all", overrelief="solid", command=selcetall)
-buttonDeselectall = Button(root, width=10, text="deselect all", overrelief="solid", command=deselectall)
+buttonSelectall = Button(root, width=10, text="select all", \
+    overrelief="solid", command=selcetall)
+buttonDeselectall = Button(root, width=10, text="deselect all", \
+    overrelief="solid", command=deselectall)
 buttonSelectall.pack()
 buttonDeselectall.pack()
 
