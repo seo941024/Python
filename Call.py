@@ -26,7 +26,7 @@ def save_data(people):
 
 
 def main(page: ft.Page):
-    page.title = "주소록"
+    page.title = "전화번호부"
     page.window_width = 800
     page.window_height = 500
 
@@ -133,7 +133,7 @@ def main(page: ft.Page):
 
     # 🔹 왼쪽 패널
     left_panel = ft.Column([
-        ft.Text("📱 입력", size=18, weight="bold"),
+        ft.Text("신규 등록 및 수정", size=18, weight="bold"),
         *inputs.values(),
         ft.Row([btn_add, btn_update]),
         ft.Divider(),
@@ -144,7 +144,7 @@ def main(page: ft.Page):
     # 🔹 오른쪽 패널
     right_panel = ft.Container(
         content=ft.Column([
-            ft.Text("📒 주소록", size=18, weight="bold"),
+            ft.Text("전화번호부", size=18, weight="bold"),
             list_column
         ]),
         expand=True,

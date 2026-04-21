@@ -1,0 +1,524 @@
+{
+    "52201": {
+        "name": "비누",
+        "stock": 29,
+        "price": 4000,
+        "original_price": 4000
+    },
+    "73327": {
+        "name": "치약",
+        "stock": 32,
+        "price": 2700,
+        "original_price": 2700
+    },
+    "72222": {
+        "name": "샴푸",
+        "stock": 36,
+        "price": 3200,
+        "original_price": 3200
+    },
+    "29887": {
+        "name": "린스",
+        "stock": 30,
+        "price": 5800,
+        "original_price": 5800
+    },
+    "55276": {
+        "name": "바디워시",
+        "stock": 6,
+        "price": 5800,
+        "original_price": 5800
+    },
+    "81856": {
+        "name": "폼클렌징",
+        "stock": 23,
+        "price": 6500,
+        "original_price": 6500
+    },
+    "32098": {
+        "name": "칫솔",
+        "stock": 28,
+        "price": 7400,
+        "original_price": 7400
+    },
+    "35278": {
+        "name": "수건",
+        "stock": 44,
+        "price": 9300,
+        "original_price": 9300
+    },
+    "68884": {
+        "name": "휴지",
+        "stock": 22,
+        "price": 6660,
+        "original_price": 7400
+    },
+    "29773": {
+        "name": "물티슈",
+        "stock": 20,
+        "price": 4800,
+        "original_price": 4800
+    },
+    "47412": {
+        "name": "세탁세제",
+        "stock": 46,
+        "price": 9200,
+        "original_price": 9200
+    },
+    "24169": {
+        "name": "섬유유연제",
+        "stock": 46,
+        "price": 1400,
+        "original_price": 1400
+    },
+    "49900": {
+        "name": "주방세제",
+        "stock": 41,
+        "price": 5400,
+        "original_price": 5400
+    },
+    "42991": {
+        "name": "수세미",
+        "stock": 4,
+        "price": 6400,
+        "original_price": 6400
+    },
+    "38056": {
+        "name": "고무장갑",
+        "stock": 33,
+        "price": 9300,
+        "original_price": 9300
+    },
+    "92331": {
+        "name": "쌀",
+        "stock": 28,
+        "price": 7600,
+        "original_price": 7600
+    },
+    "29495": {
+        "name": "라면",
+        "stock": 10,
+        "price": 2400,
+        "original_price": 2400
+    },
+    "63361": {
+        "name": "햇반",
+        "stock": 2,
+        "price": 4230,
+        "original_price": 4700
+    },
+    "55302": {
+        "name": "생수",
+        "stock": 30,
+        "price": 1200,
+        "original_price": 1200
+    },
+    "86298": {
+        "name": "우유",
+        "stock": 2,
+        "price": 6000,
+        "original_price": 6000
+    },
+    "46275": {
+        "name": "계란",
+        "stock": 23,
+        "price": 8900,
+        "original_price": 8900
+    },
+    "90623": {
+        "name": "두부",
+        "stock": 15,
+        "price": 6000,
+        "original_price": 6000
+    },
+    "41382": {
+        "name": "콩나물",
+        "stock": 49,
+        "price": 7400,
+        "original_price": 7400
+    },
+    "17218": {
+        "name": "시금치",
+        "stock": 37,
+        "price": 5100,
+        "original_price": 5100
+    },
+    "8652": {
+        "name": "양파",
+        "stock": 31,
+        "price": 4900,
+        "original_price": 4900
+    },
+    "25638": {
+        "name": "감자",
+        "stock": 39,
+        "price": 10000,
+        "original_price": 10000
+    },
+    "78064": {
+        "name": "고구마",
+        "stock": 35,
+        "price": 4700,
+        "original_price": 4700
+    },
+    "19298": {
+        "name": "사과",
+        "stock": 48,
+        "price": 2200,
+        "original_price": 2200
+    },
+    "39448": {
+        "name": "바나나",
+        "stock": 10,
+        "price": 9100,
+        "original_price": 9100
+    },
+    "82731": {
+        "name": "오렌지",
+        "stock": 42,
+        "price": 3300,
+        "original_price": 3300
+    },
+    "79570": {
+        "name": "귤",
+        "stock": 39,
+        "price": 10000,
+        "original_price": 10000
+    },
+    "88337": {
+        "name": "토마토",
+        "stock": 48,
+        "price": 6660,
+        "original_price": 7400
+    },
+    "78041": {
+        "name": "김치",
+        "stock": 43,
+        "price": 7100,
+        "original_price": 7100
+    },
+    "79767": {
+        "name": "된장",
+        "stock": 45,
+        "price": 2900,
+        "original_price": 2900
+    },
+    "9619": {
+        "name": "고추장",
+        "stock": 37,
+        "price": 3600,
+        "original_price": 3600
+    },
+    "71928": {
+        "name": "간장",
+        "stock": 36,
+        "price": 2800,
+        "original_price": 2800
+    },
+    "11211": {
+        "name": "식용유",
+        "stock": 16,
+        "price": 9100,
+        "original_price": 9100
+    },
+    "20219": {
+        "name": "참기름",
+        "stock": 5,
+        "price": 1900,
+        "original_price": 1900
+    },
+    "86288": {
+        "name": "소금",
+        "stock": 15,
+        "price": 9600,
+        "original_price": 9600
+    },
+    "93703": {
+        "name": "설탕",
+        "stock": 6,
+        "price": 3960,
+        "original_price": 4400
+    },
+    "93901": {
+        "name": "커피",
+        "stock": 37,
+        "price": 3500,
+        "original_price": 3500
+    },
+    "96519": {
+        "name": "차",
+        "stock": 21,
+        "price": 5400,
+        "original_price": 5400
+    },
+    "81842": {
+        "name": "과자",
+        "stock": 7,
+        "price": 1500,
+        "original_price": 1500
+    },
+    "84778": {
+        "name": "빵",
+        "stock": 2,
+        "price": 9900,
+        "original_price": 9900
+    },
+    "59129": {
+        "name": "젤리",
+        "stock": 14,
+        "price": 1400,
+        "original_price": 1400
+    },
+    "25689": {
+        "name": "초콜릿",
+        "stock": 16,
+        "price": 1400,
+        "original_price": 1400
+    },
+    "96277": {
+        "name": "음료수",
+        "stock": 47,
+        "price": 9500,
+        "original_price": 9500
+    },
+    "73073": {
+        "name": "맥주",
+        "stock": 23,
+        "price": 2500,
+        "original_price": 2500
+    },
+    "22677": {
+        "name": "소주",
+        "stock": 1,
+        "price": 1300,
+        "original_price": 1300
+    },
+    "29792": {
+        "name": "고기(돼지고기)",
+        "stock": 1,
+        "price": 6900,
+        "original_price": 6900
+    },
+    "20106": {
+        "name": "고기(소고기)",
+        "stock": 8,
+        "price": 8200,
+        "original_price": 8200
+    },
+    "11243": {
+        "name": "닭고기",
+        "stock": 21,
+        "price": 7600,
+        "original_price": 7600
+    },
+    "4512": {
+        "name": "생선",
+        "stock": 34,
+        "price": 5300,
+        "original_price": 5300
+    },
+    "92466": {
+        "name": "오징어",
+        "stock": 23,
+        "price": 4100,
+        "original_price": 4100
+    },
+    "8258": {
+        "name": "새우",
+        "stock": 33,
+        "price": 6800,
+        "original_price": 6800
+    },
+    "34193": {
+        "name": "게",
+        "stock": 23,
+        "price": 3300,
+        "original_price": 3300
+    },
+    "33813": {
+        "name": "쌀국수",
+        "stock": 43,
+        "price": 5700,
+        "original_price": 5700
+    },
+    "57742": {
+        "name": "파스타",
+        "stock": 1,
+        "price": 8100,
+        "original_price": 8100
+    },
+    "11206": {
+        "name": "잼",
+        "stock": 43,
+        "price": 3800,
+        "original_price": 3800
+    },
+    "88049": {
+        "name": "버터",
+        "stock": 1,
+        "price": 6500,
+        "original_price": 6500
+    },
+    "92101": {
+        "name": "치즈",
+        "stock": 15,
+        "price": 4100,
+        "original_price": 4100
+    },
+    "67088": {
+        "name": "요거트",
+        "stock": 16,
+        "price": 4000,
+        "original_price": 4000
+    },
+    "66780": {
+        "name": "아이스크림",
+        "stock": 9,
+        "price": 9500,
+        "original_price": 9500
+    },
+    "38675": {
+        "name": "통조림",
+        "stock": 7,
+        "price": 7900,
+        "original_price": 7900
+    },
+    "45820": {
+        "name": "냉동만두",
+        "stock": 30,
+        "price": 5200,
+        "original_price": 5200
+    },
+    "47617": {
+        "name": "어묵",
+        "stock": 46,
+        "price": 1700,
+        "original_price": 1700
+    },
+    "14948": {
+        "name": "햄",
+        "stock": 47,
+        "price": 4100,
+        "original_price": 4100
+    },
+    "708": {
+        "name": "소시지",
+        "stock": 4,
+        "price": 6300,
+        "original_price": 6300
+    },
+    "16661": {
+        "name": "김",
+        "stock": 29,
+        "price": 3900,
+        "original_price": 3900
+    },
+    "90571": {
+        "name": "미역",
+        "stock": 43,
+        "price": 7300,
+        "original_price": 7300
+    },
+    "19743": {
+        "name": "다시마",
+        "stock": 28,
+        "price": 9400,
+        "original_price": 9400
+    },
+    "58444": {
+        "name": "멸치",
+        "stock": 48,
+        "price": 9100,
+        "original_price": 9100
+    },
+    "70460": {
+        "name": "밀가루",
+        "stock": 13,
+        "price": 3000,
+        "original_price": 3000
+    },
+    "36605": {
+        "name": "부침가루",
+        "stock": 3,
+        "price": 3500,
+        "original_price": 3500
+    },
+    "40368": {
+        "name": "튀김가루",
+        "stock": 5,
+        "price": 6400,
+        "original_price": 6400
+    },
+    "60333": {
+        "name": "빵가루",
+        "stock": 15,
+        "price": 7000,
+        "original_price": 7000
+    },
+    "30107": {
+        "name": "식초",
+        "stock": 49,
+        "price": 9400,
+        "original_price": 9400
+    },
+    "21086": {
+        "name": "소스",
+        "stock": 47,
+        "price": 7100,
+        "original_price": 7100
+    },
+    "71371": {
+        "name": "향신료",
+        "stock": 33,
+        "price": 5400,
+        "original_price": 5400
+    },
+    "26179": {
+        "name": "양초",
+        "stock": 3,
+        "price": 4600,
+        "original_price": 4600
+    },
+    "91662": {
+        "name": "성냥",
+        "stock": 34,
+        "price": 6300,
+        "original_price": 6300
+    },
+    "23639": {
+        "name": "건전지",
+        "stock": 23,
+        "price": 2100,
+        "original_price": 2100
+    },
+    "65086": {
+        "name": "전구",
+        "stock": 12,
+        "price": 4320,
+        "original_price": 4800
+    },
+    "1448": {
+        "name": "쓰레기봉투",
+        "stock": 8,
+        "price": 1600,
+        "original_price": 1600
+    },
+    "71643": {
+        "name": "지퍼백",
+        "stock": 5,
+        "price": 1400,
+        "original_price": 1400
+    },
+    "8599": {
+        "name": "호일",
+        "stock": 44,
+        "price": 3200,
+        "original_price": 3200
+    },
+    "15720": {
+        "name": "랩",
+        "stock": 38,
+        "price": 3000,
+        "original_price": 3000
+    }
+}

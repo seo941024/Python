@@ -80,13 +80,13 @@ def main(page: ft.Page):
 
             if isinstance(r, dict):
                 result_text.value = (
-                    f"➕ Add: {r['add']}\n"
-                    f"➖ Subtract: {r['subtract']}\n"
-                    f"✖ Multiply: {r['multiply']}\n"
-                    f"➗ Divide: {r['divide']}\n\n"
-                    f"📊 Average: {r['average']:.2f}\n"
-                    f"🔼 Max: {r['max']}\n"
-                    f"🔽 Min: {r['min']}"
+                    f"덧셈: {r['add']}\n"
+                    f"뺄셈: {r['subtract']}\n"
+                    f"곱셈: {r['multiply']}\n"
+                    f"나눗셈: {r['divide']}\n\n"
+                    f"평균값: {r['average']:.2f}\n"
+                    f"최대값: {r['max']}\n"
+                    f"최소값: {r['min']}"
                 )
             else:
                 result_text.value = r
