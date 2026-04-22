@@ -8,9 +8,6 @@ def main(page: ft.Page):
     page.title = "Simple Market"
     page.bgcolor = "white"
 
-    # -------------------------
-    # 데이터 (절대 유지)
-    # -------------------------
     items = [
         "비누", "치약", "샴푸", "린스", "바디워시", "폼클렌징", "칫솔", "수건",
         "휴지", "물티슈", "세탁세제", "섬유유연제", "주방세제", "수세미", "고무장갑",
@@ -25,9 +22,8 @@ def main(page: ft.Page):
         "양초", "성냥", "건전지", "전구", "쓰레기봉투", "지퍼백", "호일", "랩"
     ]
 
-    # -------------------------
     # 데이터 로드 or 생성
-    # -------------------------
+
     if os.path.exists("market.json"):
         with open("market.json", "r", encoding="utf-8") as f:
             market = json.load(f)
@@ -36,7 +32,7 @@ def main(page: ft.Page):
         x = 0
 
         while x < len(items):
-            mid = str(random.randint(1, 100000))  # 문자열 key
+            mid = str(random.randint(1, 100000)) 
 
             if mid in market:
                 continue
@@ -51,16 +47,11 @@ def main(page: ft.Page):
             }
             x += 1
 
-    # -------------------------
     # 저장 함수
-    # -------------------------
     def save_data():
         with open("market.json", "w", encoding="utf-8") as f:
             json.dump(market, f, ensure_ascii=False, indent=4)
 
-    # -------------------------
-    # 상태
-    # -------------------------
     cart = []
     total_cash = 0
     today_total = 0
@@ -86,9 +77,7 @@ def main(page: ft.Page):
     danger_view = ft.Column(scroll=ft.ScrollMode.AUTO, expand=True)
     discount_view = ft.Column(scroll=ft.ScrollMode.AUTO, expand=True)
 
-    # -------------------------
-    # 함수
-    # -------------------------
+
     def find(name):
         name = name.strip()
         for k, v in market.items():
@@ -170,7 +159,7 @@ def main(page: ft.Page):
         qty_input.value = ""
 
         load_danger()
-        save_data()   # 저장
+        save_data() 
         page.update()
 
     def buy(e):
@@ -197,7 +186,7 @@ def main(page: ft.Page):
 
         output.value = "구매 완료"
 
-        save_data()   # 저장
+        save_data()
         page.update()
 
     def toggle_admin(e):
@@ -240,7 +229,7 @@ def main(page: ft.Page):
         stock_input.value = ""
 
         load_danger()
-        save_data()   # 저장
+        save_data() 
         page.update()
 
     # -------------------------

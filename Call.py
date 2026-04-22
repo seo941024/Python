@@ -6,7 +6,7 @@ FILE_NAME = "people.csv"
 
 keys = ["이름", "이메일", "전화번호", "직장명"]
 
-# 🔹 데이터 불러오기
+#  데이터 불러오기
 def load_data():
     data = []
     if os.path.exists(FILE_NAME):
@@ -17,7 +17,7 @@ def load_data():
     return data
 
 
-# 🔹 데이터 저장
+#  데이터 저장
 def save_data(people):
     with open(FILE_NAME, "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.DictWriter(f, fieldnames=keys)
@@ -43,7 +43,7 @@ def main(page: ft.Page):
 
     selected_index = {"value": None}
 
-    # 🔹 카드 UI
+    #  카드 UI
     def create_card(p, index):
         return ft.Container(
             content=ft.Column([
@@ -62,7 +62,7 @@ def main(page: ft.Page):
             shadow=ft.BoxShadow(blur_radius=5, color="#cccccc")
         )
 
-    # 🔹 리스트 갱신
+    #  리스트 갱신
     def refresh_list(data=None):
         list_column.controls.clear()
         target = data if data is not None else people
@@ -72,7 +72,7 @@ def main(page: ft.Page):
 
         page.update()
 
-    # 🔹 추가
+    #  추가
     def add_person(e):
         person = {k: inputs[k].value.strip() for k in keys}
         people.append(person)
@@ -83,7 +83,7 @@ def main(page: ft.Page):
 
         refresh_list()
 
-    # 🔹 삭제
+    #  삭제
     def delete_person(index):
         if 0 <= index < len(people):
             people.pop(index)
@@ -91,7 +91,7 @@ def main(page: ft.Page):
 
         refresh_list()
 
-    # 🔹 수정 불러오기
+    #  수정 불러오기
     def load_edit(index):
         selected_index["value"] = index
         p = people[index]
@@ -101,7 +101,7 @@ def main(page: ft.Page):
 
         page.update()
 
-    # 🔹 수정 저장
+    #  수정 저장
     def update_person(e):
         idx = selected_index["value"]
 
@@ -114,7 +114,7 @@ def main(page: ft.Page):
         save_data(people)
         refresh_list()
 
-    # 🔹 검색
+    #  검색
     def search(e):
         keyword = search_field.value.strip().lower()
         result = []
@@ -126,12 +126,12 @@ def main(page: ft.Page):
 
         refresh_list(result)
 
-    # 🔹 버튼
+    #  버튼
     btn_add = ft.ElevatedButton("추가", on_click=add_person)
     btn_update = ft.ElevatedButton("수정 저장", on_click=update_person)
     btn_search = ft.ElevatedButton("검색", on_click=search)
 
-    # 🔹 왼쪽 패널
+    #  왼쪽 패널
     left_panel = ft.Column([
         ft.Text("신규 등록 및 수정", size=18, weight="bold"),
         *inputs.values(),
@@ -141,7 +141,7 @@ def main(page: ft.Page):
         btn_search
     ], width=220)
 
-    # 🔹 오른쪽 패널
+    #  오른쪽 패널
     right_panel = ft.Container(
         content=ft.Column([
             ft.Text("전화번호부", size=18, weight="bold"),
@@ -159,7 +159,7 @@ def main(page: ft.Page):
         ], expand=True)
     )
 
-    # 🔹 시작 시 데이터 표시
+    #  시작 시 데이터 표시
     refresh_list()
 
 
