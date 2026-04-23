@@ -132,5 +132,3 @@ class BowlingGame:
         self.throw_list.append(pins)
         self.print_live_board()
 
-
-# ================= 실행 (input 그대로 유지) =================

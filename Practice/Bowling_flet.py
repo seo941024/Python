@@ -2,154 +2,109 @@ from bowling_func import BowlingGame
 import flet as ft
 
 def main(page: ft.Page):
-    page.title = "🎳 Bowling Score Board"
-    page.padding = 20
+    page.title = "Professional Bowling System"
+    page.bgcolor = "#0A192F"  # 어두운 볼링장 배경색
+    page.padding = 30
+    
+    game = BowlingGame()
+    
+    # 이 컨테이너가 '통합 점수판' 역할을 합니다.
+    scoreboard_row = ft.Row(spacing=0, alignment=ft.MainAxisAlignment.CENTER)
 
-    game = BowlingGame()  # 외부 클래스 있다고 가정
-    game_over = False
-
-    frame_container = ft.Container()
-    score_container = ft.Container()
-    result_text = ft.Text(size=16, weight="bold")
-
-    input_box = ft.TextField(
-        label="핀 개수 입력 🎳",
-        width=200,
-    )
-
-    roll_btn = ft.ElevatedButton("🎯 투구")
-
-    # ================= 프레임 UI =================
-    def build_frame_ui(frames):
-        return ft.Row(
-            [
-                ft.Container(
-                    content=ft.Text(
-                        f"{i+1}\n{f}",
-                        text_align="center",
-                        weight=ft.FontWeight.BOLD,
-                        size=30
-                    ),
-                    width=160 if i == 9 else 100,   # ⭐ 10프레임만 크게
-                    height=100,
-                    border=ft.border.all(5, "#aa2626"),
-                    bgcolor="#FFE4E4",
-                    alignment=ft.Alignment(0, 0),
-                    border_radius=8,
-                )
-                for i, f in enumerate(frames)
-            ],
-            scroll=ft.ScrollMode.AUTO
-        )
-
-    # ================= 점수 UI =================
-    def build_score_ui(scores):
-        return ft.Container(
-            content=ft.Row(
-            [
-                ft.Container(
-                    content=ft.Text(
-                        str(s),
-                        weight=ft.FontWeight.BOLD,
-                        size=30
-                    ),
-                    width=160 if i == 9 else 100,   # ⭐ 10프레임만 길게
-                    height=100,
-                    border=ft.border.all(5, "#2453aa"),
-                    bgcolor="#ECEEFF",
-                    border_radius=8,
-                    alignment=ft.Alignment(0, 0),
-                    shadow=ft.BoxShadow(
-                            blur_radius=10,
-                            color="#00000010"
-                        )
-
-                )
-                for i, s in enumerate(scores)   # ⭐ 여기 중요
-            ],
-            scroll=ft.ScrollMode.AUTO
-        )
-        )
-    # ================= 투구 =================
-    def roll(e):
-        nonlocal game_over
-
-        if game_over:
-            return
-        
-        value = input_box.value
-
-        if not value or not value.isdigit():
-            return
-
-        pins = int(value)
-
-        game.add_throw(pins)
-
-        frames = game.show_display()
+    def render_board():
+        # 데이터 갱신
+        frames_data = game.get_display_data()
         scores = game.calculate_live_scores()
+        
+        scoreboard_row.controls.clear()
 
-        frame_container.content = build_frame_ui(frames)
-        score_container.content = build_score_ui(scores)
+        for i in range(10):
+            is_10th = (i == 9)
+            frame_width = 150 if is_10th else 100
+            
+            # 1. 프레임 내 투구 표시 (상단 작은 칸들)
+            shots = frames_data[i] if i < len(frames_data) else []
+            num_slots = 3 if is_10th else 2
+            
+            shot_boxes = []
+            for s_idx in range(num_slots):
+                val = shots[s_idx] if s_idx < len(shots) else ""
+                shot_boxes.append(
+                    ft.Container(
+                        content=ft.Text(val, size=18, weight="bold", color="white"),
+                        width=frame_width / num_slots,
+                        height=45,
+                     
+                        border=ft.border.all(1, "#334756")
+                    )
+                )
 
-        input_box.value = ""
-
-        if len(scores) >= 10:
-            game_over = True
-            input_box.disabled = True
-            roll_btn.disabled = True
-            result_text.value = f"🎉 게임 종료! 최종 점수: {scores[-1]}"
-
+            # 2. 프레임 전체 구성 (번호 + 투구 + 점수를 하나의 수직 칼럼으로)
+            frame_column = ft.Container(
+                width=frame_width,
+                border=ft.border.all(2, "#334756"),
+                bgcolor="#16213E",
+                content=ft.Column(
+                    [
+                        # 프레임 번호 (제일 위)
+                        ft.Container(
+                            content=ft.Text(str(i+1), size=12, color="#999999"),
+                            alignment=ft.alignment.center,
+                            height=25,
+                            bgcolor="#0F3460"
+                        ),
+                        # 투구 점수 (중간)
+                        ft.Row(shot_boxes, spacing=0),
+                        # 누적 점수 (제일 아래)
+                        ft.Container(
+                            content=ft.Text(
+                                str(scores[i]) if i < len(scores) else "",
+                                size=28, weight="heavy", color="#E94560"
+                            ),
+                            height=65,
+                            alignment=ft.alignment.center,
+                        )
+                    ],
+                    spacing=0
+                )
+            )
+            scoreboard_row.controls.append(frame_column)
+        
         page.update()
 
-    roll_btn.on_click = roll
-
-    # ================= UI =================
-    page.add(
-        ft.Column(
-            [
-                ft.Container(
-                    content=ft.Text(
-                        "🎳 Bowling Game",
-                        size=34,
-                        weight=ft.FontWeight.BOLD,
-                        color="#1E1E1E"
-                    ),
-                    alignment=ft.Alignment(0, 0),
-                    padding=10
-                ),
-
-                ft.Container(
-                    content=ft.Row(
-                        [input_box, roll_btn],
-                        alignment=ft.MainAxisAlignment.CENTER
-                    ),
-                    padding=20,
-                    bgcolor="white",
-                    border_radius=15,
-                    shadow=ft.BoxShadow(
-                        blur_radius=15,
-                        color="#0000001A"
-                    )
-                ),
-
-                ft.Divider(),
-
-                ft.Text("🔢 프레임 🔢", size=22, weight=ft.FontWeight.BOLD),
-                frame_container,
-
-                ft.Container(height=10),
-
-                ft.Text("🏆 점수 🏆", size=22, weight=ft.FontWeight.BOLD),
-                score_container,
-
-                ft.Container(height=10),
-
-                result_text,
-            ],
-            spacing=10
-        )
+    # --- 입력창 ---
+    input_field = ft.TextField(
+        label="PIN", width=100, text_align="center", 
+        color="white", border_color="#E94560",
+        on_submit=lambda _: do_roll()
     )
 
+    def do_roll():
+        if input_field.value:
+            game.throw_list.append(int(input_field.value))
+            input_field.value = ""
+            render_board()
 
-ft.app(target=main)
+    # 초기 화면 구성
+    render_board()
+
+    page.add(
+        ft.Column([
+            ft.Text("🎳 LANE 02 - PLAYER 1", size=32, weight="bold", color="white"),
+            ft.Divider(height=20, color="transparent"),
+            # 여기가 핵심: 한 줄로 연결된 점수판
+            ft.Container(
+                content=scoreboard_row,
+                border_radius=10,
+                padding=10
+            ),
+            ft.Divider(height=40, color="transparent"),
+            ft.Row([
+                input_field, 
+                ft.ElevatedButton("GO!", on_click=lambda _: do_roll(), bgcolor="#E94560", color="white")
+            ], alignment="center")
+        ], horizontal_alignment="center")
+    )
+
+if __name__ == "__main__":
+    ft.app(target=main)

@@ -81,7 +81,7 @@ class BowlingGame:
 
             else:
                 if self.throw_list[i] == 10:
-                    display_score.append(f"{'❌':1}")
+                    display_score.append(f"{'❌ ':1}")
                     i += 1
                 else:
                     if i+1 < len(self.throw_list) and self.throw_list[i] + self.throw_list[i+1] == 10:

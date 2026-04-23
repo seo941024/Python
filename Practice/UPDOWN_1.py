@@ -1,5 +1,4 @@
-import tkinter
-
+import tkinter 
 import random
 
 def random_num():
@@ -26,10 +25,10 @@ restart = tkinter.Button(window, text = "Restart")
 restart.pack()
 
 while True:
-    n=int(entry.get(("1~100 number Enter : ")))
+    N = int(entry.get())
     
     if n==target :
-        label.config(text="정답인",text=target,text="입니다")
+        label.config(f"text=정답인text=target,text=입니다")
 
         while True:
             repeat = input("한번 더 하고싶다면 Y를, 종료하고 싶다면 N을 누르세요.")
