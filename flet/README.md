@@ -214,10 +214,9 @@ python main.py
   
 ![preview](https://raw.githubusercontent.com/seo941024/Python/master/flet/bowling.png)
 ---
-## flet UI 코드
-```
-python
-python
+## flet UI 코드 ##
+
+```python
 from bowling_func import BowlingGame
 import flet as ft
 
@@ -370,7 +369,6 @@ def main(page: ft.Page):
             spacing=10
         )
     )
-
 
 ft.app(target=main)
 ```
