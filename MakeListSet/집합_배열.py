@@ -32,15 +32,16 @@ class Set:
         if self.size == 0:
             self._print_error("empty")
             return
-        if not e in self.data:
-            self._print_error("notin")
-            return
-        
         for i in range(self.size):
             if self.data[i] == e:
-                self.data = self.data[:i] +[None] + self.data[i+1:] 
-                self.size -=1
+                # 뒤 원소를 한 칸씩 당겨 빈칸 없애기
+                for j in range(i, self.size - 1):
+                    self.data[j] = self.data[j + 1]
+                self.data[self.size - 1] = None
+                self.size -= 1
                 return e
+
+        self._print_error("notin")
             
     def isfull(self): return True if self.size==self.MAX_SIZE else False
 

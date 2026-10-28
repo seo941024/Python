@@ -28,7 +28,8 @@ class LinearDeque:
 
     def add_front(self, e):
         # 앞(front)에 요소를 추가합니다
-        if self.front == 0:
+        # front가 -1이면 앞쪽 빈칸 없음, 음수 인덱스 기록 방지
+        if self.front < 0:
             print("overflow — 앞쪽 공간이 없습니다")
             return False
         self.queue[self.front] = e
@@ -92,9 +93,13 @@ class LinearDeque:
 # 테스트
 d = LinearDeque()
 
+d.add_front('X')   # overflow — 앞쪽 공간이 없습니다
+
+d.add_rear('A')
 d.add_rear('B')
 d.add_rear('C')
-d.add_front('A')   # 앞에 추가
+print(d.delete_front())    # A
+d.add_front('A')   # 꺼낸 앞쪽 빈칸에 다시 추가
 
 d.print_deque()            # [A, B, C]
 print(d.get_front())       # A

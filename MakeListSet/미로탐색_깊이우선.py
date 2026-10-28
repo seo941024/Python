@@ -12,12 +12,14 @@ class MazeSolver:
         ]
         self.visited = [[False]*size for _ in range(size)]
         self.stack = []
-        self.path = []  #지나온 경로 저장
+        self.path = []    # 시작부터 출구까지 경로
+        self.parent = {}  # 각 칸의 이전 칸
 
     def reset(self):
         self.visited = [[False]*self.size for _ in range(self.size)]
         self.stack = []
         self.path = []
+        self.parent = {}
 
     def _find_start_exit(self):
         start = exit = None
@@ -36,21 +38,26 @@ class MazeSolver:
             print("시작(e) 또는 출구(x)가 없습니다")
             return False
 
-        self.stack.append(start)
+        self.stack.append((start, None))
 
         while self.stack:
-            pos = self.stack.pop()
+            pos, prev = self.stack.pop()
             r, c = pos
 
             if self.visited[r][c]:
                 continue
             self.visited[r][c] = True
-            self.path.append(pos)
+            self.parent[pos] = prev
 
             if verbose:
                 print(f"현재 위치: {pos}")
 
             if pos == exit:
+                # 출구에서 이전 칸을 거슬러 올라가 경로 복원
+                while pos is not None:
+                    self.path.append(pos)
+                    pos = self.parent[pos]
+                self.path.reverse()
                 print(f"\n출구 도착! 경로: {self.path}")
                 return True
 
@@ -60,7 +67,7 @@ class MazeSolver:
                     0 <= nc < self.size and
                     not self.visited[nr][nc] and
                     self.maze[nr][nc] in ('0','x')):
-                    self.stack.append((nr, nc))
+                    self.stack.append(((nr, nc), pos))
 
         print("출구가 없습니다.")
         return False

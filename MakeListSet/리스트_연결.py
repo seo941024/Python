@@ -42,9 +42,9 @@ class LinkedList:
         self.size -= 1
         return data
 
-    def is_empty(self): self.size == 0
+    def is_empty(self): return self.size == 0
 
-    def is_full(self): False
+    def is_full(self): return False
 
     def get_entry(self, pos):
         cur = self.head
@@ -56,7 +56,7 @@ class LinkedList:
             raise IndexError("위치가 범위를 벗어났습니다.")
         return cur.data
 
-    def size_of(self): self.size
+    def size_of(self): return self.size
 
     def clear(self):
         self.head = None
