@@ -15,11 +15,33 @@ class calculate:
  
         return "OK" if not stack else "ERROR"
  
+    def tokenize(self, expr):
+        """공백 없이 붙여 쓴 식도 숫자·연산자·괄호 단위로 나눔"""
+        tokens = []
+        num = ''
+        for ch in expr:
+            if ch.isdigit() or ch == '.':
+                num += ch
+                continue
+            # 식 맨 앞이나 연산자·여는 괄호 뒤의 -는 음수 부호
+            prev = tokens[-1] if tokens else '('
+            if ch == '-' and not num and prev in ('+', '-', '*', '/', '('):
+                num = '-'
+                continue
+            if num:
+                tokens.append(num)
+                num = ''
+            if not ch.isspace():
+                tokens.append(ch)
+        if num:
+            tokens.append(num)
+        return tokens
+ 
     def infix_to_postfix(self, expr):
         prec = {'+': 1, '-': 1, '*': 2, '/': 2}
         stack, result = [], []
  
-        for token in expr.split():
+        for token in self.tokenize(expr):
             if token == '(':
                 stack.append(token)
             elif token == ')':
@@ -43,16 +65,22 @@ class calculate:
         tokens = expr.split()
  
         for token in tokens:
-            if token.lstrip('-').isdigit():
-                stack.append(float(token))
-            else:
+            if token in ('+', '-', '*', '/'):
+                # 연산자 앞에 숫자가 두 개 없으면 잘못된 식
+                if len(stack) < 2:
+                    raise ValueError("잘못된 수식입니다")
                 b = stack.pop()
                 a = stack.pop()
                 if   token == '+': stack.append(a + b)
                 elif token == '-': stack.append(a - b)
                 elif token == '*': stack.append(a * b)
                 elif token == '/': stack.append(float(a / b))
+            else:
+                stack.append(float(token))
  
+        # 계산 후 숫자가 하나만 남아야 정상
+        if len(stack) != 1:
+            raise ValueError("잘못된 수식입니다")
         return stack[0]
  
     def evaluate_infix(self, expr):
@@ -104,13 +132,14 @@ def main(page: ft.Page):
         page.update()
  
     def on_backspace(e):
-        # 뒤에서부터 공백 포함 한 토큰 제거
-        text_field.value = text_field.value.rstrip()[: text_field.value.rstrip().rfind(" ") + 1] if " " in text_field.value.rstrip() else ""
+        # 마지막 한 글자 제거
+        text_field.value = (text_field.value or "").rstrip()[:-1]
         page.update()
  
     def btn_click(val):
         def handler(e):
-            text_field.value = (text_field.value or "") + val + " "
+            # 공백 없이 이어 붙여 1, 2를 연속으로 누르면 12
+            text_field.value = (text_field.value or "") + val
             page.update()
         return handler
  
@@ -166,7 +195,7 @@ def main(page: ft.Page):
     page.add(
         ft.Row([text_field, calc_btn]),
         result_text,
-        ft.Text("※ 버튼으로 입력하거나 직접 타이핑 (띄어쓰기 필요: 3 + ( 5 * 2 ))",
+        ft.Text("※ 버튼으로 입력하거나 직접 타이핑 (띄어쓰기 없이도 가능: 3+(5*2))",
                 size=12, color="#888888"),
         ft.Divider(),
         button_pad,

@@ -73,7 +73,7 @@ class BFSVisualMazeSolver:
                     height=50,
                     bgcolor=bg_color,
                     border_radius=5,
-                    alignment=ft.alignment.center,
+                    alignment=ft.Alignment.CENTER,
                     content=ft.Text(
                         label,
                         weight=ft.FontWeight.BOLD,

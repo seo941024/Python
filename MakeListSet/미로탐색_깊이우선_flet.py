@@ -16,7 +16,8 @@ class VisualMazeSolver:
         
         self.visited = [[False]*size for _ in range(size)]
         self.stack = []
-        self.path = []
+        self.path = []    # 시작부터 출구까지 경로
+        self.parent = {}  # 각 칸의 이전 칸
         
         self.is_solving = False
         
@@ -75,6 +76,7 @@ class VisualMazeSolver:
         self.visited = [[False]*self.size for _ in range(self.size)]
         self.stack = []
         self.path = []
+        self.parent = {}
         
         for r in range(self.size):
             for c in range(self.size):
@@ -122,17 +124,17 @@ class VisualMazeSolver:
             self._finish_solve()
             return
 
-        self.stack.append(start)
+        self.stack.append((start, None))
 
         while self.stack:
-            pos = self.stack.pop()
+            pos, prev = self.stack.pop()
             r, c = pos
 
             if self.visited[r][c]:
                 continue
                 
             self.visited[r][c] = True
-            self.path.append(pos)
+            self.parent[pos] = prev
 
             if self.maze[r][c] not in ('e', 'x'):
                 self.cells[r][c].bgcolor = ft.Colors.YELLOW_400
@@ -143,14 +145,27 @@ class VisualMazeSolver:
             await asyncio.sleep(0.3) 
 
             if pos == exit_pos:
-                self.status_text.value = "🎉 출구 도착!"
+                # 출구에서 이전 칸을 거슬러 올라가 경로 복원
+                while pos is not None:
+                    self.path.append(pos)
+                    pos = self.parent[pos]
+                self.path.reverse()
+
+                # 최종 경로만 진한 파란색으로 표시
+                for pr, pc in self.path:
+                    if self.maze[pr][pc] not in ('e', 'x'):
+                        self.cells[pr][pc].bgcolor = ft.Colors.BLUE_400
+                        self.cells[pr][pc].content.value = "·"
+
+                self.status_text.value = f"🎉 출구 도착! 경로 길이: {len(self.path)}칸"
                 self.status_text.color = ft.Colors.GREEN_400
                 self.page.update()
                 self._finish_solve()
                 return
 
+            # 방문한 칸은 연한 파란색, 경로 여부는 출구 도착 후 결정
             if self.maze[r][c] not in ('e', 'x'):
-                self.cells[r][c].bgcolor = ft.Colors.BLUE_400
+                self.cells[r][c].bgcolor = ft.Colors.BLUE_200
                 self.cells[r][c].content.value = "·" 
             self.page.update()
 
@@ -160,7 +175,7 @@ class VisualMazeSolver:
                     0 <= nc < self.size and
                     not self.visited[nr][nc] and
                     self.maze[nr][nc] in ('0', 'x')):
-                    self.stack.append((nr, nc))
+                    self.stack.append(((nr, nc), pos))
 
         self.status_text.value = "❌ 출구가 없습니다."
         self.status_text.color = ft.Colors.RED_400

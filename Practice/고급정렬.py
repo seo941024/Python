@@ -90,7 +90,8 @@ def double_quick_sort(arr, pivot_index1=None, pivot_index2=None):
     left = [x for x in arr if x < pivot1]
     p1 = [x for x in arr if x == pivot1]
     mid = [x for x in arr if (x > pivot1 and x < pivot2)]
-    p2 = [x for x in arr if x == pivot2]  
+    # 두 피벗이 같으면 p1에 이미 담겨 있으므로 p2는 비움
+    p2 = [x for x in arr if x == pivot2] if pivot2 != pivot1 else []
     right = [x for x in arr if x > pivot2]
 
     return double_quick_sort(left) + p1 + double_quick_sort(mid) + p2 + double_quick_sort(right) 
@@ -110,12 +111,20 @@ def radix_sort(arr):
             result.extend(bucket)
         return result
 
-    max_val = max(arr)
-    exp = 1
-    while max_val // exp > 0:
-        arr = counting_sort_by_digit(arr, exp)
-        exp *= 10
-    return arr
+    def sort_non_negative(arr):
+        if not arr:
+            return arr
+        max_val = max(arr)
+        exp = 1
+        while max_val // exp > 0:
+            arr = counting_sort_by_digit(arr, exp)
+            exp *= 10
+        return arr
+
+    # 음수는 절댓값으로 정렬한 뒤 순서를 뒤집어 양수 앞에 붙임
+    negatives = sort_non_negative([-x for x in arr if x < 0])
+    positives = sort_non_negative([x for x in arr if x >= 0])
+    return [-x for x in reversed(negatives)] + positives
 
 
 # 테스트

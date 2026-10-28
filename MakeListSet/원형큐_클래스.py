@@ -108,11 +108,12 @@ class LinkedQueue:
 # 테스트
 # ============================================================
 
-print("=== ArrayQueue ===")
-aq = ArrayQueue()
-aq.enqueue('A'); aq.enqueue('B'); aq.enqueue('C')
-print(aq.peek())        # A
-print(aq.size())        # 3
-print(aq.dequeue())     # A
-print(aq.dequeue())     # B
-print(aq.size())        # 1
+if __name__ == "__main__":
+    print("=== ArrayQueue ===")
+    aq = ArrayQueue()
+    aq.enqueue('A'); aq.enqueue('B'); aq.enqueue('C')
+    print(aq.peek())        # A
+    print(aq.size())        # 3
+    print(aq.dequeue())     # A
+    print(aq.dequeue())     # B
+    print(aq.size())        # 1
