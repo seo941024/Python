@@ -3,3 +3,6 @@
 .vscode/
 __pycache__/
 *.pyc
+
+# 개인 문서 (PC에만 보관)
+계획서.html
