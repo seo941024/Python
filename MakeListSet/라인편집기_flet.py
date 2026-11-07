@@ -161,8 +161,9 @@ def main(page: ft.Page):
             refresh()
             set_status(f"'{f.filename}'을 불러왔습니다.")
  
-    def on_quit(e):
-        page.window_destroy()
+    # Flet 0.80부터 창 닫기는 page.window.destroy() 비동기 메서드
+    async def on_quit(e):
+        await page.window.destroy()
  
     # --- 버튼 스타일 헬퍼 ---
     def make_btn(label, color, handler):

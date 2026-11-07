@@ -63,11 +63,12 @@ def main(page: ft.Page):
         )
 
     #  리스트 갱신
+    #  data는 (people 위치, 사람) 쌍의 리스트
     def refresh_list(data=None):
         list_column.controls.clear()
-        target = data if data is not None else people
+        target = data if data is not None else list(enumerate(people))
 
-        for i, p in enumerate(target):
+        for i, p in target:
             list_column.controls.append(create_card(p, i))
 
         page.update()
@@ -88,6 +89,13 @@ def main(page: ft.Page):
         if 0 <= index < len(people):
             people.pop(index)
             save_data(people)
+
+            # 수정 중인 사람의 위치도 삭제에 맞춰 조정
+            sel = selected_index["value"]
+            if sel == index:
+                selected_index["value"] = None
+            elif sel is not None and sel > index:
+                selected_index["value"] = sel - 1
 
         refresh_list()
 
@@ -119,10 +127,11 @@ def main(page: ft.Page):
         keyword = search_field.value.strip().lower()
         result = []
 
-        for p in people:
+        # 검색 결과 안의 순서가 아닌 people 전체 기준 위치를 함께 저장
+        for i, p in enumerate(people):
             full_text = " ".join(p.values()).lower()
             if keyword in full_text:
-                result.append(p)
+                result.append((i, p))
 
         refresh_list(result)
 

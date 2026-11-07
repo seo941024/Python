@@ -149,6 +149,9 @@ def main(page: ft.Page):
         v["stock"] -= qty
 
         cart.append((k, v["name"], qty, price))
+        cart_view.controls.append(
+            ft.Text(f"{v['name']} x{qty} = {price:,}원", color="black")
+        )
 
         total_cash += price
         total_text.value = f"총 금액: {total_cash:,}원"
@@ -179,6 +182,7 @@ def main(page: ft.Page):
             f.write(receipt + "\n\n")
 
         cart.clear()
+        cart_view.controls.clear()
         total_cash = 0
 
         total_text.value = "총 금액: 0원"
