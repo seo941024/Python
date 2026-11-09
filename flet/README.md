@@ -26,6 +26,10 @@ Flet으로 만든 화면 프로그램과 화면 배치 연습 파일을 모은 �
 
 왼쪽에 재고 부족 목록, 오른쪽에 할인 목록을 두고 가운데에서 장바구니와 구매를 처리하는 Flet 상점 화면. 두 파일은 화면 제목 `Simple Market`과 세 칸 배치가 같고 장바구니·구매 처리 흐름도 같은 상점 화면의 작성본. `market.py`는 여기에 파일 저장과 관리자 모드가 더해진 형태. 아래 함수 표는 `market.py` 기준.
 
+라면 3개, 우유 2개, 사과 5개 순서로 장바구니에 담은 화면. 재고가 0인 우유는 재고 부족으로 담기지 않음.
+
+<img src="../docs/images/flet_market.png" width="760">
+
 | 함수 | 동작 |
 |---|---|
 | `find(name)` | 입력 이름과 저장된 이름의 앞뒤 공백을 지우고 비교해 상품 번호와 정보 반환 |
@@ -123,6 +127,10 @@ def load_discount():
 
 연락처를 카드 목록으로 보여 주고 관리하는 Flet 화면. 왼쪽은 입력 영역, 오른쪽은 카드 목록이며 목록이 바뀔 때마다 `people.csv` 전체를 다시 저장. 저장 항목은 `keys` 리스트에 정한 네 개로, CSV 열 순서와 같음.
 
+`people.csv`를 불러온 첫 화면.
+
+<img src="../docs/images/flet_phonebook.png" width="600">
+
 | 함수 | 동작 |
 |---|---|
 | `load_data()` | `people.csv`가 있으면 `csv.DictReader`로 읽어 사전 리스트 반환, 없으면 빈 리스트 |
@@ -174,6 +182,10 @@ def load_data():
 
 쉼표로 구분한 정수 여러 개를 받아 사칙연산과 통계값을 한 번에 보여 주는 Flet 화면. 계산은 `Calculator` 클래스, 입력 변환과 결과 문자열 구성은 화면 함수 `run_calc`가 담당.
 
+`12,4,8,6`을 입력하고 결과 보기를 누른 화면.
+
+<img src="../docs/images/flet_number_calculator.png" width="340">
+
 | 결과 키 | 계산 방식 |
 |---|---|
 | `add` | `sum()`으로 전체 합 |
@@ -207,6 +219,10 @@ results["divide"] = div
 [`flet_bowling.py`](flet_bowling.py) · 클래스 `BowlingGame`, 함수 `main`
 
 투구마다 쓰러뜨린 핀 수를 입력받아 프레임 표기와 누적 점수를 다시 계산하는 Flet 화면. 투구 기록 리스트 하나만 저장하고 점수와 표기는 매번 이 기록에서 새로 계산.
+
+`10, 7, 3, 9, 0, 10, 10, 8, 1, 6` 순서로 투구한 화면.
+
+<img src="../docs/images/flet_bowling.png" width="560">
 
 | 메서드·함수 | 동작 |
 |---|---|
@@ -308,6 +324,10 @@ bonus = lotto[6]
 
 `ft.Stack`으로 테두리 상자 위에 제목 라벨을 겹쳐, 테두리 선 위에 제목이 걸친 묶음 상자를 만든 Flet 화면. 상자 위에는 입력창과 확인 버튼 배치.
 
+실행 화면.
+
+<img src="../docs/images/flet_label_box.png" width="420">
+
 핵심 코드
 
 ```python
@@ -331,6 +351,10 @@ ft.Container(
 [`Text.py`](Text.py) · 함수 `main` 안의 `create_card`
 
 음향 센서로 굴착과 누출 같은 이벤트를 감지하는 관제 대시보드를 가정한 화면 시안. 화면의 수치와 이벤트 목록은 모두 코드에 고정한 값이며 버튼에는 동작을 연결하지 않음.
+
+실행 화면. Flet 0.82.2에서 열리도록 실행할 때만 `ft.icons`, `ft.alignment.center`, `min_height` 세 곳을 새 문법으로 바꿔 끼운 결과이며 저장소 파일은 그대로.
+
+<img src="../docs/images/flet_sensor_monitor.png" width="760">
 
 | 영역 | 구성 |
 |---|---|
@@ -370,6 +394,10 @@ def create_card(title, content, expand=False):
 |---|---|---|
 | [`PYTHON GUI EXAMPLE.py`](PYTHON%20GUI%20EXAMPLE.py) | `Label` | `bitmap="warning"` 기본 이미지와 글자를 `compound="top"`으로 함께 표시, `relief="groove"` 테두리 |
 | [`Text2.py`](Text2.py) | `Text` | `insert`로 두 줄 입력 후 `tag_add`로 `"행.열"` 범위에 태그를 붙이고 `tag_config`로 배경색과 글자색 지정 |
+
+실행 화면. 왼쪽 `PYTHON GUI EXAMPLE.py`, 오른쪽 `Text2.py`.
+
+<img src="../docs/images/tk_label_bitmap.png" width="380"> <img src="../docs/images/tk_text_tag.png" width="380">
 
 핵심 코드
 

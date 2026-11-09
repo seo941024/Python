@@ -25,6 +25,24 @@ tkinter `Label`과 `Text` 예제는 [`flet`](../flet/README.md#tkinter-기초) �
 | `Scale` | [`Scale.py`](Scale.py) | `orient="horizontal"`과 `tickinterval=10`으로 0부터 100까지 눈금 슬라이더 구성. `command`에서 `scale.get()` 값을 `Label`에 표시 |
 | `Scrollbar` | [`Scrollbar.py`](Scrollbar.py) | `Listbox`의 `yscrollcommand=scrollbar.set`과 `scrollbar["command"] = listbox.yview`로 두 위젯을 양방향 연결 |
 
+실행 화면
+
+| `Button` · plus를 세 번 누른 뒤 | `Checkbutton` · item1·item3 선택 |
+|---|---|
+| ![`Button` · plus를 세 번 누른 뒤](../docs/images/tk_button.png) | ![`Checkbutton` · item1·item3 선택](../docs/images/tk_checkbutton.png) |
+
+| `Frame` · 좌우로 나눈 테두리 프레임 | `Listbox` · 여러 항목 선택 |
+|---|---|
+| ![`Frame` · 좌우로 나눈 테두리 프레임](../docs/images/tk_frame.png) | ![`Listbox` · 여러 항목 선택](../docs/images/tk_listbox.png) |
+
+| `Listbox_4.py` · Insert로 항목 추가 | `Message` · 여러 줄 문자열 |
+|---|---|
+| ![`Listbox_4.py` · Insert로 항목 추가](../docs/images/tk_listbox_4.png) | ![`Message` · 여러 줄 문자열](../docs/images/tk_message.png) |
+
+| `Scale` · 60으로 옮긴 슬라이더 | `Scrollbar` · Listbox와 연결한 스크롤바 |
+|---|---|
+| ![`Scale` · 60으로 옮긴 슬라이더](../docs/images/tk_scale.png) | ![`Scrollbar` · Listbox와 연결한 스크롤바](../docs/images/tk_scrollbar.png) |
+
 `Listbox` 작성본 비교
 
 | 파일 | 달라진 내용 |
