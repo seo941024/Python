@@ -13,35 +13,52 @@ tkinter `Label`과 `Text` 예제는 [`flet`](../flet/README.md#tkinter-기초) �
 
 ## 1. tkinter 위젯
 
-모든 파일은 `from tkinter import *`로 시작해 `Tk()` 창을 만들고 `pack()`으로 위젯을 배치한 뒤 `mainloop()`로 창을 띄움.
+대부분의 파일은 `from tkinter import *`로 시작해 `Tk()` 창을 만들고 `pack()`으로 위젯을 배치한 뒤 `mainloop()`로 창을 띄움. `combobox.py`만 `import tkinter as tk`와 `from tkinter import ttk` 방식 사용.
 
 | 위젯 | 파일 | 연습한 옵션·이벤트 |
 |---|---|---|
 | `Button` | [`GUIBUTTON.py`](GUIBUTTON.py) | `command`에 plus·minus 함수를 연결하고 `global count`를 바꾼 뒤 `label.config(text=...)`로 숫자 갱신 |
+| `Canvas` | [`Canvas.py`](Canvas.py) | `bg="white"`, `bd=2` 캔버스를 `pack(fill="both", expand=True)`로 창 크기에 맞춰 확장하고 `create_line`으로 가로선 표시 |
 | `Checkbutton` | [`CheckButton.py`](CheckButton.py) | `variable`에 연결한 `IntVar`로 체크 상태 0과 1을 읽고 `messagebox.showinfo`로 표시. `select()`와 `deselect()`로 전체 선택·해제 버튼 구성 |
+| `ttk.Combobox` | [`combobox.py`](combobox.py) | 리스트 내포로 만든 1부터 100까지 값을 `values`에 지정하고 `set('선택')`으로 첫 표시 문구 설정 |
 | `Frame` | [`Frame.py`](Frame.py) | `relief="solid"`, `bd=2` 테두리 프레임 두 개를 `pack(side=..., fill="both", expand=True)`로 좌우에 나누고 각각 `Label` 배치 |
 | `Listbox` | [`Listbox.py`](Listbox.py) · [`Listbox_2.py`](Listbox_2.py) · [`Listbox_3.py`](Listbox_3.py) · [`Listbox_4.py`](Listbox_4.py) | 항목 삽입과 선택 항목 삭제, `Entry` 입력 추가. 작성본별 차이는 아래 표 |
+| `Menu` | [`Menu.py`](Menu.py) | `add_cascade`로 File·Edit·Run 메뉴를 메뉴 막대에 추가. `add_command`·`add_separator`·`add_radiobutton`·`add_checkbutton` 항목 구성, Exit에 `quit()`·`destroy()` 연결 후 `root.config(menu=menubar)`로 창에 부착 |
 | `Message` | [`Message.py`](Message.py) | `width=320`으로 정한 폭에서 여러 줄 문자열 표시, `relief="solid"` 테두리 |
+| `Radiobutton` | [`Radio button.py`](Radio%20button.py) | `IntVar` 두 개로 item1·item2와 item3·item4를 각각 한 묶음으로 구성. Show 버튼에서 `get()` 값을 콘솔과 `messagebox.showinfo`로 표시 |
 | `Scale` | [`Scale.py`](Scale.py) | `orient="horizontal"`과 `tickinterval=10`으로 0부터 100까지 눈금 슬라이더 구성. `command`에서 `scale.get()` 값을 `Label`에 표시 |
 | `Scrollbar` | [`Scrollbar.py`](Scrollbar.py) | `Listbox`의 `yscrollcommand=scrollbar.set`과 `scrollbar["command"] = listbox.yview`로 두 위젯을 양방향 연결 |
+| `Spinbox` | [`spinbox.py`](spinbox.py) | `from_=0`, `to=100` 범위에 `validate='all'` 적용. `root.register`로 등록한 `validatecommand`·`invalidcommand`로 입력값을 검사하고 범위 밖 값은 `Label`에 오류 문구 표시 |
 
 실행 화면
 
-| `Button` · plus를 세 번 누른 뒤 | `Checkbutton` · item1·item3 선택 |
+| `Button` · plus를 세 번 누른 뒤 | `Canvas` · `create_line`으로 그린 가로선 |
 |---|---|
-| ![`Button` · plus를 세 번 누른 뒤](../docs/images/tk_button.png) | ![`Checkbutton` · item1·item3 선택](../docs/images/tk_checkbutton.png) |
+| ![`Button` · plus를 세 번 누른 뒤](../docs/images/tk_button.png) | ![`Canvas` · create_line으로 그린 가로선](../docs/images/tk_canvas.png) |
+
+| `Checkbutton` · item1·item3 선택 | `ttk.Combobox` · 첫 표시 문구 '선택' |
+|---|---|
+| ![`Checkbutton` · item1·item3 선택](../docs/images/tk_checkbutton.png) | ![`ttk.Combobox` · 첫 표시 문구](../docs/images/tk_combobox.png) |
 
 | `Frame` · 좌우로 나눈 테두리 프레임 | `Listbox` · 여러 항목 선택 |
 |---|---|
 | ![`Frame` · 좌우로 나눈 테두리 프레임](../docs/images/tk_frame.png) | ![`Listbox` · 여러 항목 선택](../docs/images/tk_listbox.png) |
 
-| `Listbox_4.py` · Insert로 항목 추가 | `Message` · 여러 줄 문자열 |
+| `Listbox_4.py` · Insert로 항목 추가 | `Menu` · File·Edit·Run 메뉴 막대 |
 |---|---|
-| ![`Listbox_4.py` · Insert로 항목 추가](../docs/images/tk_listbox_4.png) | ![`Message` · 여러 줄 문자열](../docs/images/tk_message.png) |
+| ![`Listbox_4.py` · Insert로 항목 추가](../docs/images/tk_listbox_4.png) | ![`Menu` · File·Edit·Run 메뉴 막대](../docs/images/tk_menu.png) |
+
+| `Message` · 여러 줄 문자열 | `Radiobutton` · 두 묶음에서 item1·item4 선택 |
+|---|---|
+| ![`Message` · 여러 줄 문자열](../docs/images/tk_message.png) | ![`Radiobutton` · 두 묶음에서 item1·item4 선택](../docs/images/tk_radio.png) |
 
 | `Scale` · 60으로 옮긴 슬라이더 | `Scrollbar` · Listbox와 연결한 스크롤바 |
 |---|---|
 | ![`Scale` · 60으로 옮긴 슬라이더](../docs/images/tk_scale.png) | ![`Scrollbar` · Listbox와 연결한 스크롤바](../docs/images/tk_scrollbar.png) |
+
+| `Spinbox` · 0부터 100까지 범위 검사, 42 입력 |   |
+|---|---|
+| ![`Spinbox` · 0부터 100까지 범위 검사, 42 입력](../docs/images/tk_spinbox.png) |   |
 
 `Listbox` 작성본 비교
 
@@ -72,6 +89,8 @@ def delete():
 - `Listbox` 작성본은 화면 목록과 파이썬 리스트 `items`를 함께 고쳐 두 목록을 같은 상태로 유지. 삭제 후 `print(items)`로 리스트 상태를 콘솔에 출력.
 - 선택 항목이 없으면 `curselection()`이 빈 튜플을 돌려주므로 길이 검사 후 바로 반환. `selectmode="extended"`에서 여러 개를 골라도 첫 선택 항목만 삭제.
 - `Scrollbar.py`는 두 위젯을 `Frame` 하나에 담아 스크롤바는 오른쪽, 목록은 왼쪽에 배치.
+- `Radio button.py`는 같은 `IntVar`를 공유하는 버튼끼리만 하나가 선택되는 구조라 item1·item2 묶음과 item3·item4 묶음에서 각각 하나씩 선택 가능.
+- `spinbox.py`의 `'%P'`는 변경 후 값을 검사 함수에 전달하는 치환 코드. 빈 값은 허용하고 0부터 100까지 숫자만 통과.
 
 ---
 
