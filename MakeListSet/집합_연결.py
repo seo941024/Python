@@ -39,20 +39,60 @@ class LinkedSet:
                 else :
                     prev.next = current.next
                 self.size -= 1
-                return
+                return e
             prev = current
             current = current.next
         
         print("존재하지 않는 item입니다.")
 
-    # def isfull(self):
+    # 연결 구조는 메모리가 허용하는 한 추가 가능
+    def isfull(self): return False
 
     def isempty(self) : return True if self.size == 0 else False
 
     def union(self, setB):
         result = LinkedSet()
-        
+        for node in (self.head, setB.head):
+            current = node
+            while current:
+                if not result.contain(current.data):
+                    result.insert(current.data)
+                current = current.next
         return result
+
+    def intersect(self, setB):
+        result = LinkedSet()
+        current = self.head
+        while current:
+            if setB.contain(current.data):
+                result.insert(current.data)
+            current = current.next
+        return result
+
+    def difference(self, setB):
+        result = LinkedSet()
+        current = self.head
+        while current:
+            if not setB.contain(current.data):
+                result.insert(current.data)
+            current = current.next
+        return result
+
+    def equals(self, setB):
+        if self.size != setB.size:
+            return False
+        return self.difference(setB).size == 0
+
+    def check_size(self):
+        return self.size
+
+    def display(self):
+        items = []
+        current = self.head
+        while current:
+            items.append(current.data)
+            current = current.next
+        print(items)
 
 '''• Contain(e): 집합이 원소 e를 포함하는지 검사한다
 • Insert(e): 새로운 원소 e를 삽입한다. (중복 삽입은 허용안함)
@@ -65,3 +105,38 @@ class LinkedSet:
 • Equals(setB): setB와 같은 집합인지를 검사한다
 • Size(): 집합의 원소의 개수를 반환한다
 • Display(): 리스트를 화면에 출력한다'''
+
+
+a = LinkedSet()
+b = LinkedSet()
+
+a.insert(1); a.insert(2); a.insert(3)
+b.insert(2); b.insert(3); b.insert(4)
+
+print("=== display ===")
+a.display()
+b.display()
+
+print("\n=== insert 중복 ===")
+a.insert(2)
+
+print("\n=== delete ===")
+print(a.delete(1))
+a.display()
+a.delete(99)
+
+print("\n=== union ===")
+a.union(b).display()
+
+print("\n=== intersect ===")
+a.intersect(b).display()
+
+print("\n=== difference ===")
+a.difference(b).display()
+
+print("\n=== equals ===")
+print(a.equals(b))
+print(a.equals(a))
+
+print("\n=== check_size ===")
+print(a.check_size())
