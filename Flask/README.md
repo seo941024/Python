@@ -25,4 +25,4 @@ python app.py
 
 <img src="../docs/images/flask_run.png" width="620">
 
-<img src="../docs/images/flask_browser.png" width="420">
+<img src="../docs/images/flask_browser.png" width="260">
