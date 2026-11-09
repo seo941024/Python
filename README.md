@@ -32,6 +32,12 @@
 - 원형 덱은 원형 큐 클래스를 상속해 공백·포화 판정과 개수 계산을 재사용
 - 실행 중 발견한 결함과 수정 내용은 [결함 수정 이력](MakeListSet/README.md#결함-수정-이력)에 정리
 
+실행 결과
+
+<img src="docs/images/list_linked.png" width="380"> <img src="docs/images/deque_circular.png" width="380">
+
+<img src="docs/images/priority_queue.png" width="380"> <img src="docs/images/set_array.png" width="380">
+
 ## 2. 알고리즘
 
 ### 정렬
@@ -49,6 +55,10 @@
 
 [정렬 검증](Practice/README.md#정렬-검증): 무작위 배열과 경계 사례를 `sorted()` 결과와 대조해 6종 모두 일치 확인.
 
+실행 결과
+
+<img src="docs/images/sort_six.png" width="380">
+
 ### 미로 탐색
 
 같은 미로에서 다음에 방문할 칸을 고르는 자료구조만 바꿔 비교. [세 방식 비교표](MakeListSet/README.md#미로-탐색-비교)
@@ -58,6 +68,12 @@
 | [깊이 우선](MakeListSet/README.md#깊이-우선-미로-탐색) | 스택 | 한 갈래를 끝까지 들어간 뒤 되돌아감. 이전 칸 기록으로 경로 복원 |
 | [너비 우선](MakeListSet/README.md#너비-우선-미로-탐색) | 큐 | 가까운 칸부터 퍼져 최단 경로 보장 |
 | [우선순위](MakeListSet/README.md#우선순위-미로-탐색) | 우선순위 큐 | 출구까지 거리가 가장 짧은 칸부터 방문 |
+
+실행 결과
+
+<img src="docs/images/maze_dfs.png" width="380"> <img src="docs/images/maze_bfs.png" width="380">
+
+<img src="docs/images/maze_priority.png" width="380">
 
 ### 그래프
 
@@ -70,6 +86,10 @@
 | [괄호 검사](MakeListSet/README.md#괄호-검사) | 스택 | 여는 괄호를 쌓고 닫는 괄호와 짝 비교 |
 | [수식 계산기](MakeListSet/README.md#수식-계산기) | 스택 | 중위 표기식을 후위 표기식으로 바꾼 뒤 계산 |
 | [라인 편집기](MakeListSet/README.md#라인-편집기) | 리스트 | 줄 번호 기반 삽입·삭제·교체, 파일 저장과 불러오기 |
+
+실행 결과
+
+<img src="docs/images/calculator.png" width="380"> <img src="docs/images/flet_line_editor.png" width="380">
 
 ## 4. 화면 프로그램
 
@@ -95,6 +115,12 @@
 | [볼링 점수 화면](flet/README.md#볼링-점수-화면) | 투구 기록 기반 프레임 표기와 누적 점수 |
 | [화면 구성 연습](flet/README.md#2-화면-구성-연습) | 라벨 겹침 상자, 관제 대시보드 화면 시안 |
 
+실행 화면
+
+<img src="docs/images/flet_market.png" width="380"> <img src="docs/images/flet_phonebook.png" width="380">
+
+<img src="docs/images/flet_number_calculator.png" width="380"> <img src="docs/images/flet_bowling.png" width="380">
+
 ### 게임과 tkinter
 
 | 프로그램 | 내용 |
@@ -105,9 +131,19 @@
 | [로또 번호 추첨](flet/README.md#로또-번호-추첨) | 입력 검사와 집합 교집합으로 등수 판정하는 콘솔 프로그램 |
 | [tkinter 위젯](Python%20GUI/README.md#1-tkinter-위젯) | Button, Checkbutton, Listbox, Scale, Scrollbar 등 위젯별 옵션과 이벤트 |
 
+실행 화면
+
+<img src="docs/images/tk_button.png" width="380"> <img src="docs/images/tk_checkbutton.png" width="380">
+
+<img src="docs/images/tk_listbox_4.png" width="380"> <img src="docs/images/tk_scale.png" width="380">
+
 ## 5. 확률 시뮬레이션
 
 [가챠 확률 시뮬레이터](Practice/README.md#가챠-확률-시뮬레이터): 뽑기 획득 개수의 분포를 몬테카를로 시뮬레이션으로 계산하고 이항분포 계산값과 비교.
+
+실행 결과
+
+<img src="docs/images/gacha_simulator.png" width="380">
 
 ## 6. 기초 문법
 
