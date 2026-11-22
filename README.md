@@ -156,4 +156,4 @@
 - 콘솔 프로그램: Python 3.10, `python -X utf8 파일명`
 - Flet 화면: Python 3.14, Flet 0.82.2
 - 폴더별 실행 방법은 각 폴더 README에 정리
-- [`README_FLET_PRESENTATION.md`](README_FLET_PRESENTATION.md)는 Flet 시각화판과 `flet` 폴더 응용 프로그램 발표 자료
+- [`docs/README_FLET_PRESENTATION.md`](docs/README_FLET_PRESENTATION.md)는 Flet 시각화판과 `flet` 폴더 응용 프로그램 발표 자료
