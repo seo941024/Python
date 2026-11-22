@@ -7,7 +7,7 @@
 
 | 파일 | 역할 |
 |---|---|
-| [`app.py`](app.py) | `Flask(__name__)`로 앱 생성, `@app.route('/')`에 `hello_world()` 연결, 직접 실행 시 `app.run(debug=True)`로 개발 서버 실행 |
+| [`app.py`](app.py) | `Flask(__name__)`로 앱 생성, `@app.route('/')`에 `hello_world()` 연결, `python app.py` 실행 시 `app.run(debug=True)`로 개발 서버 실행 |
 
 ## 실행
 
